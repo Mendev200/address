@@ -1,0 +1,35 @@
+.custom-input {
+    background-color: #f0f0f0; 
+}
+.custom-input:focus {
+    background-color: #fff; 
+}
+
+.text-purple {
+    color: rgb(137, 5, 224);
+}
+.text-decoration {
+    text-decoration: none;
+}
+
+.card-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.card-pb {
+    padding-bottom: 20vh;
+}
+
+.card-pb-dix {
+    padding-bottom: 10vh;
+}
+
+.btn-purple {
+    background-color: rgb(137, 5, 224);
+    border-color: rgb(137, 5, 224);
+}
+
+.btn-purple:hover {
+    background-color: #6a1b9a; 
+    border-color: #6a1b9a;
+}
+
