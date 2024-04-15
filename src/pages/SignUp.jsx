@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom"; // Importez Redirect depuis react-router-dom
-import { postSignUp } from "../components/api/postSignUp"; // Import de la fonction SignUpApi
+import { Link, Navigate } from "react-router-dom";
+import { postSignUp } from "../components/api/postSignUp";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/pages/style.css';
 
@@ -11,28 +11,34 @@ function SignUp() {
         email: "",
         password: ""
     });
-
-    const [redirect, setRedirect] = useState(false); // État pour gérer la redirection après la connexion réussie
+    const [redirect, setRedirect] = useState(false);
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
     };
 
-    // Fonction pour gérer la soumission du formulaire d'authentification
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Empêche le rechargement de la page par défaut lors de la soumission du formulaire
+        e.preventDefault();
+
+        // Convertir l'e-mail en minuscules avant la validation
+        const formDataLower = {
+            ...formData,
+            email: formData.email.toLowerCase()
+        };
+
         try {
-            await postSignUp(formData); // Utilise la fonction d'authentification pour envoyer les données du formulaire à l'API
-            setRedirect(true); // Déclenche la redirection après une connexion réussie
+            await postSignUp(formDataLower);
+            setRedirect(true);
         } catch (error) {
-            console.error(error); // Gestion des erreurs : affiche l'erreur dans la console
+            console.error(error);
         }
     };
 
-    // Si redirect est true, redirige l'utilisateur vers la page d'accueil
     if (redirect) {
         return <Navigate to="/sign-in" />;
     }
+
     return (
         <div className="container-fluid mt-5">
             <div className="row justify-content-center">
@@ -57,10 +63,10 @@ function SignUp() {
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="password" className="form-label fw-bolder">Password</label>
-                                    <input type="password" placeholder="Enter at least8+ characters" className="form-control custom-input mb-5" id="password" name="password" value={formData.password} onChange={handleChange} />
+                                    <input type="password" placeholder="Enter at least 8 characters" className="form-control custom-input mb-5" id="password" name="password" value={formData.password} onChange={handleChange} />
                                 </div>
                                 <button type="submit" className="form-control btn btn-purple text-white">Sign Up</button>
-                                <p className="mt-3 text-center">Already have an account? <Link to="/sign-in" className="text-purple  text-decoration">Log In</Link></p>
+                                <p className="mt-3 text-center">Already have an account? <Link to="/sign-in" className="text-purple text-decoration">Log In</Link></p>
                             </form>
                         </div>
                     </div>
