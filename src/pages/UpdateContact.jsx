@@ -1,9 +1,11 @@
 import React from "react";
 import DataForm from "../components/DataForm";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/pages/style.css';
+import { useParams } from "react-router-dom";
 
 function UpdateContact() {
+    // Récupérer l'ID du contact à partir des paramètres d'URL
+    const { contactId } = useParams();
+
     return (
         <div className="container-fluid mt-5">
             <div className="row justify-content-center">
@@ -11,7 +13,8 @@ function UpdateContact() {
                     <div className="card mt-5 card-shadow card-pb-dix">
                         <div className="card-body d-flex flex-column justify-content-center">
                             <h1 className="fw-bold mb-4">Update contact</h1>
-                            <DataForm />
+                            {/* Passer l'ID du contact à DataForm */}
+                            <DataForm contactId={contactId} />
                         </div>
                     </div>
                 </div>
