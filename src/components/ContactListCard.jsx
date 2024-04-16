@@ -21,10 +21,10 @@ const ContactListCard = () => {
 
     return (
         // Affiche chaque contact dans la liste
-        <div className="row">
+        <div className="scroll-horizontal">
             {contacts.map((contact) => (
-                <div key={contact.id} className="col-md-3 mb-3">
-                    <div className="d-flex flex-column align-items-center">
+                <div key={contact.id} className="">
+                    <div className="d-flex flex-column align-items-center ms-4">
                         <img src={`/images/${contact.avatar}`} alt="Avatar" className="mb-4 rounded-circle" style={{ width: '150px' }} />
                         <h5 className="card-title fw-bold">{contact.fullName}</h5>
                         <p className="card-text">{contact.professionalTitle}</p>
