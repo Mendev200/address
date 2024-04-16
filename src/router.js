@@ -18,10 +18,10 @@ function AppRouter() {
                 <Route path="/add-contact" element={<AddContact />} />
                 <Route path="/sign-in" element={<SignIn />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/show-user" element={<ShowUser />} />
+                <Route path="/show-user/" element={<ShowUser />} />
                 <Route path="/sign-up" element={<SignUp />} />
-                <Route path="/update-contact" element={<UpdateContact />} />
-                <Route path="/update-user" element={<UpdateUser />} />
+                <Route path="/update-contact/:contactId" element={<UpdateContact />} />
+                <Route path="/update-user/:userId" element={<UpdateUser />} />
             </Routes>
         </Router>
     );
