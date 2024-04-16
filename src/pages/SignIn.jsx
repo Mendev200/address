@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom"; // Importez Redirect depuis react-router-dom
+import { Link, Navigate } from "react-router-dom";
 import { postSignIn } from "../components/api/postSignIn";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/pages/style.css';
@@ -9,25 +9,27 @@ function SignIn() {
         email: "",
         password: ""
     });
-    const [redirect, setRedirect] = useState(false); // État pour gérer la redirection après la connexion réussie
+    const [redirect, setRedirect] = useState(false);
+    const [error, setError] = useState("");
 
-    // Fonction pour mettre à jour les données du formulaire lors de la saisie de l'utilisateur
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // Fonction pour gérer la soumission du formulaire d'authentification
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Empêche le rechargement de la page par défaut lors de la soumission du formulaire
+        e.preventDefault();
         try {
-            await postSignIn(formData); // Utilise la fonction d'authentification pour envoyer les données du formulaire à l'API
-            setRedirect(true); // Déclenche la redirection après une connexion réussie
+            const response = await postSignIn(formData);
+            if (!response.error) {
+                setRedirect(true);
+            } else {
+                setError(response.error);
+            }
         } catch (error) {
-            console.error(error); // Gestion des erreurs : affiche l'erreur dans la console
+            setError("An error occurred. Please try again later.");
         }
     };
 
-    // Si redirect est true, redirige l'utilisateur vers la page d'accueil
     if (redirect) {
         return <Navigate to="/home" />;
     }
@@ -39,6 +41,7 @@ function SignIn() {
                     <div className="card mt-5 card-shadow card-pb">
                         <div className="card-body d-flex flex-column justify-content-center">
                             <h1 className="text-center fw-bold">Sign in</h1>
+                            {error && <p className="text-danger text-center">{error}</p>}
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
                                     <label htmlFor="email" className="form-label fw-bolder">Email</label>
