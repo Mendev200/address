@@ -1,9 +1,9 @@
 import axios from "axios";
-import { API_KEY } from "./config/Config";
+import { API_URL } from "./config/Config";
 
-export const putUpdateUser = async () => {
+export const putUpdateUser = async (id) => {
     try {
-      const response = await axios.put(`/api/updateuser?api_key=${API_KEY}`);
+      const response = await axios.put(`${API_URL}/users/${id}`);
       return response.data;
     } catch (error) {
       throw error;

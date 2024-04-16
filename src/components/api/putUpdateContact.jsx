@@ -1,11 +1,12 @@
 import axios from "axios";
-import { API_KEY } from "./config/Config";
+import { API_URL } from "./config/Config";
 
-export const putUpdateContact = async (formData) => {
-    try {
-      const response = await axios.put(`/api/updatecontact?api_key=${API_KEY}`, formData);
+export const putUpdateContact = async (id, formData) => {
+  try {
+      const response = await axios.put(`${API_URL}/contacts/${id}`, formData);
+      console.log(response);
       return response.data;
-    } catch (error) {
+  } catch (error) {
       throw error;
-    }
-  };
+  }
+};

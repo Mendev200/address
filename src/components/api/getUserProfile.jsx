@@ -1,9 +1,9 @@
 import axios from "axios";
-import { API_KEY } from "./config/Config";
+import { API_URL } from "./config/Config";
 
-export const getUserProfile = async (formData) => {
+export const getUserProfile = async () => {
     try {
-      const response = await axios.get(`/api/yserprofile?api_key=${API_KEY}`, formData);
+      const response = await axios.get(`${API_URL}/users/`);
       return response.data;
     } catch (error) {
       throw error;

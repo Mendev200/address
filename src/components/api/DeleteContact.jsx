@@ -1,11 +1,12 @@
 import axios from "axios";
-import { API_KEY } from "./config/Config";
+import { API_URL } from "./config/Config";
 
-export const deleteContact = async (formData) => {
+export const deleteContact = async (id) => {
     try {
-      const response = await axios.delete(`/api/signin?api_key=${API_KEY}`, formData);
-      return response.data;
+        const response = await axios.delete(`${API_URL}/contacts/${id}`);
+        console.log(response);
+        return response.data;
     } catch (error) {
-      throw error;
+        throw error;
     }
-  };
+};
