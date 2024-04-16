@@ -1,36 +1,33 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { deleteContact } from "./api/deleteContact";
 import { deleteUser } from "./api/deleteUser";
-import { deleteContact } from "./api/deleteContact"; // Import de la fonction DeleteContactApi
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function Delete({ userType }) {
-    const [redirect, setRedirect] = useState(false); // État pour gérer la redirection après la suppression réussie
+export default function Delete({ contactId, userId }) {
+    const [refresh, setRefresh] = useState(false); // État pour gérer le rafraîchissement de la page
 
-    // Fonction pour gérer la suppression de l'utilisateur
     const handleDelete = async () => {
         try {
-            // Utilise soit la fonction de suppression d'utilisateur ou de contact de l'API en fonction de userType
-            if (userType === "user") {
-                await deleteUser();
-            } else if (userType === "contact") {
-                await deleteContact();
+            if (userId) {
+                console.log(`Suppression de l'utilisateur avec l'ID : ${userId}`);
+                await deleteUser(userId); // Supprimer l'utilisateur
+            } else if (contactId) {
+                console.log(`Suppression du contact avec l'ID : ${contactId}`);
+                await deleteContact(contactId); // Supprimer le contact
             }
-            setRedirect(true); // Déclenche la redirection après la suppression réussie
+            console.log("Suppression terminée avec succès !");
+            setRefresh(true); // Mettre à jour l'état pour rafraîchir la page
         } catch (error) {
-            console.error(error); // Gestion des erreurs : affiche l'erreur dans la console
+            console.error("Une erreur s'est produite lors de la suppression :", error);
         }
     };
 
-    // Si redirect est true, redirige l'utilisateur vers une autre page (par exemple, la page d'accueil)
-    if (redirect) {
-        return <Navigate to="/show-user" />;
+    if (refresh) {
+        // Rafraîchir la page en rechargeant l'URL
+        window.location.reload();
     }
 
     return (
-        <div>
-            {/* Mettez ici le contenu de votre composant, par exemple un bouton pour déclencher la suppression */}
-            <button onClick={handleDelete} className="btn text-white btn-danger" type="button">Delete {userType}</button>
-        </div>
+        <button onClick={handleDelete} className="btn text-white btn-danger" type="button">Supprimer</button>
     );
 }
