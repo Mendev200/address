@@ -1,0 +1,174 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john@gmail.com",
+      "password": "bonjourjohn"
+    },
+    {
+      "id": "2",
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "email": "alice@gmail.com",
+      "password": "helloalice"
+    },
+    {
+      "id": "3",
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "email": "bob@gmail.com",
+      "password": "bobbob"
+    },
+    {
+      "id": "4",
+      "firstName": "Emily",
+      "lastName": "Brown",
+      "email": "emily@gmail.com",
+      "password": "emily123"
+    },
+    {
+      "id": "5",
+      "firstName": "Michael",
+      "lastName": "Jones",
+      "email": "michael@gmail.com",
+      "password": "mikeiscool"
+    }
+  ],
+  "sign-in": [
+    {
+      "id": "e2a4",
+      "email": "john@gmail.com",
+      "password": "bonourjohn"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "1",
+      "phoneNumber": "123456789",
+      "email": "john@example.com",
+      "address": "123 Main St, City",
+      "avatar": "avatar.png"
+    },
+    {
+      "id": "3",
+      "phoneNumber": "5551234567",
+      "email": "alex@example.com",
+      "address": "789 Elm St, Village",
+      "avatar": "avatar.png"
+    },
+    {
+      "id": "cc74",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1 avenue des etoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "a884",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1 avenue des etoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "bccd",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1 avenue des etoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "0f7f",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1avenue des étoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "f7b8",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1 avenue des etoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "ed1e",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1avenue des étoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "0253",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1 avenue des etoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "1f8f",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1 avenue des etoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "ebd8",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1 avenue des etoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "fd89",
+      "phoneNumber": "0690101010",
+      "email": "lola@gmail.com",
+      "address": "1avenue des étoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "e389",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1 avenue des etoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "f850",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1 avenue des etoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "5cfd",
+      "phoneNumber": "0690101010",
+      "email": "Eric@gmail.com",
+      "address": "1 avenue des etoiles",
+      "file": null,
+      "password": ""
+    },
+    {
+      "id": "ef29",
+      "phoneNumber": "0690101010",
+      "email": "lola@gmail.com",
+      "address": "1 avenue des etoiles",
+      "file": null,
+      "password": ""
+    }
+  ]
+}
