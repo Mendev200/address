@@ -33,3 +33,11 @@
     border-color: #6a1b9a;
 }
 
+.scroll-horizontal {
+    display: flex;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    width: 100%;
+  }
+
