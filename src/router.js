@@ -17,7 +17,7 @@ function AppRouter() {
             <Routes>
                 <Route path="/add-contact" element={<AddContact />} />
                 <Route path="/sign-in" element={<SignIn />} />
-                <Route path="/home" element={<Home />} />
+                <Route path="/home/:userId" element={<Home />} />
                 <Route path="/show-user/" element={<ShowUser />} />
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/update-contact/:contactId" element={<UpdateContact />} />
