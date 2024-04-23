@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useLocation, Navigate } from "react-router-dom";
+import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import { postSignUp } from "./api/postSignUp";
-import { postSignIn } from "./api/postSignIn";
+import { CheckUserId } from "./CheckUserId";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/pages/style.css';
 
@@ -13,41 +13,54 @@ export default function SignForm() {
         password: ""
     });
     const [redirectSignIn, setRedirectSignIn] = useState(false);
-    const [redirectHome, setRedirectHome] = useState(false);
-
-    // Utilisation de useLocation pour obtenir le chemin de l'URL
+    const [error, setError] = useState("");
     const location = useLocation();
+    const navigation = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
+    const validatePassword = (password) => {
+        // Au moins 16 caractères, au moins une lettre majuscule, au moins un chiffre et au moins un caractère spécial
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{16,}$/;
+        return passwordRegex.test(password);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const { firstName, lastName, email, password } = formData;
+
+        // Validation des champs requis
+        if (!email || !password || (location.pathname !== "/sign-in" && (!firstName || !lastName))) {
+            setError("Veuillez remplir tous les champs requis");
+            return;
+        }
+
         const formDataLower = {
             ...formData,
-            email: formData.email.toLowerCase()
+            email: email.toLowerCase()
         };
 
         try {
-            // Vérifie si le chemin de l'URL contient "/sign-in"
             if (location.pathname === "/sign-in") {
-                await postSignIn(formDataLower);
-                setRedirectHome(true);
-            } else { // Sinon, il s'agit d'une inscription
+                const userId = await CheckUserId(formDataLower);
+                navigation(`/home/${userId}`);
+            } else {
+                if (!validatePassword(password)) {
+                    setError("Le mot de passe doit contenir au moins 16 caractères, au moins une lettre majuscule, au moins un chiffre et au moins un caractère spécial");
+                    return;
+                }
                 await postSignUp(formDataLower);
                 setRedirectSignIn(true);
             }
         } catch (error) {
+            setError("Une erreur s'est produite. Veuillez réessayer.");
             console.error(error);
         }
     };
-
-    if (redirectHome) {
-        return <Navigate to="/home" />;
-    }
 
     if (redirectSignIn) {
         return <Navigate to="/sign-in" />;
@@ -55,7 +68,7 @@ export default function SignForm() {
 
     return (
         <form onSubmit={handleSubmit}>
-            {/* Afficher les champs firstName et lastName uniquement sur la page d'inscription */}
+            {error && <div className="alert alert-danger" role="alert">{error}</div>}
             {location.pathname !== "/sign-in" && (
                 <div>
                     <div className="mb-3">
@@ -74,7 +87,7 @@ export default function SignForm() {
             </div>
             <div className="mb-3">
                 <label htmlFor="password" className="form-label fw-bolder">Password</label>
-                <input type="password" placeholder="Enter at least 8 characters" className="form-control custom-input mb-5" id="password" name="password" value={formData.password} onChange={handleChange} />
+                <input type="password" placeholder="Enter at least 16 characters including at least one uppercase letter, one digit, and one special character" className="form-control custom-input mb-5" id="password" name="password" value={formData.password} onChange={handleChange} />
             </div>
             <button type="submit" className="form-control btn btn-purple text-white">
                 {location.pathname === "/sign-in" ? "Sign In" : "Sign Up"}

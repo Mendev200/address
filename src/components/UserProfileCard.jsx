@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Delete from "./Delete";
-import { getUserProfile } from "../components/api/getUserProfile";
+import { getUser } from "../components/api/getUser";
 
 const UserProfileCard = () => {
   const [userData, setUserData] = useState(null);
@@ -9,7 +9,7 @@ const UserProfileCard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userData = await getUserProfile();
+        const userData = await getUser();
         setUserData(userData);
       } catch (error) {
         console.error(error);
