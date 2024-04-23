@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 function UpdateContact() {
     // Récupérer l'ID du contact à partir des paramètres d'URL
     const { contactId } = useParams();
+    const {userId} = useParams();
 
     return (
         <div className="container-fluid mt-5">
@@ -14,7 +15,7 @@ function UpdateContact() {
                         <div className="card-body d-flex flex-column justify-content-center">
                             <h1 className="fw-bold mb-4">Update contact</h1>
                             {/* Passer l'ID du contact à DataForm */}
-                            <DataForm contactId={contactId} />
+                            <DataForm contactId={contactId} userId={userId} />
                         </div>
                     </div>
                 </div>
