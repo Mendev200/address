@@ -34,6 +34,13 @@
       "lastName": "Love",
       "email": "john@gmail.com",
       "password": "bonourjohn"
+    },
+    {
+      "id": "d5f5",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "johnny@gmail.com",
+      "password": "Bonjourbonsoir123*"
     }
   ],
   "sign-in": [
@@ -53,17 +60,17 @@
   "contacts": [
     {
       "phoneNumber": "0690101010",
-      "email": "Eric@gmail.com",
-      "address": "1avenue des étoiles",
+      "email": "lola@gmail.com",
+      "address": "France",
       "file": null,
       "password": "",
       "id": "1"
     },
     {
-      "id": "237b",
+      "id": "fdf7",
       "phoneNumber": "0690101010",
       "email": "lola@gmail.com",
-      "address": "1avenue des étoiles",
+      "address": "1 avenue des etoiles",
       "file": null,
       "password": ""
     }
