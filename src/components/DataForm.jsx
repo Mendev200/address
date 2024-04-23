@@ -47,7 +47,7 @@ export default function DataForm({ contactId, userId }) {
     };
 
     if (redirectHome) {
-        return <Navigate to="/home" />;
+        return <Navigate to={`/home/${userId}`} />;
     }
 
     if (redirectShowUser) {
