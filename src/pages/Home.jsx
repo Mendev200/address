@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import ContactListCard from "../components/ContactListCard";
+// import { useParams } from "react-router-dom";
+
 import '../css/pages/style.css';
 
 function Home() {
-
+    // const { userId } = useParams();
     return (
         <div>
+            {/* < UserId userId={userId.id} /> */}
             <div className="d-flex justify-content-between m-3">
                 <Link to="/add-contact" className="btn-purple text-white text-decoration btn">Add new contact</Link>
                 <form className="d-flex" role="search">

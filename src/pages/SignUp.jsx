@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import SignForm from "../components/SignForm";
 
 function SignUp() {
-
     return (
         <div className="container-fluid mt-3">
             <div className="row justify-content-center">
